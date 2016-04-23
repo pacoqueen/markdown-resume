@@ -25,7 +25,7 @@ at the [blog post for the project][blog].
 
 ## Help
 ```
-Markdown Resume Generator version 2.0.8 by Craig Davis
+Markdown Resume Generator version 2.0.10 by Craig Davis
 
 Usage:
   [options] command [arguments]
@@ -66,6 +66,9 @@ every two seconds via a meta tag. Open the `./examples/ouput/sample.html` file
 in your browser, and then just save your markdown document when you want to see
 a fresh preview.
 
+For information about running this inside a Docker container, please read [Issue 46](https://github.com/there4/markdown-resume/issues/46#issuecomment-126520792)
+where [Sebastian Klose](https://github.com/sklose) has shared his approach.
+
 ## Authoring Your Resume
 
 Markdown is limited to basic html markup. Follow the `examples/source/sample.md`
@@ -88,6 +91,15 @@ commands, you'll need to first install the dependencies:
 * `composer install`
 
 After that, you can run the `md2resume_dev.php` file from the command line.
+
+## Building a Release
+
+1. Tag the repo with the new build number. This will be picked up for both
+   the `version` file used by the self update command and placed into the
+   phar file.
+2. Run `pake build`.
+3. Push both the tag and the code.
+
 Check out the pake tooling for more information about the build. Pake will be
 installed to `./vendor/bin/pake`. So for instance a complete phar file build
 looks like `./vendor/bin/pake build`.
@@ -101,25 +113,28 @@ are a more comfortable with html than markdown, you should use it.
 
 ## Changelog
 
+* __2.0.10__ : Updated spacing in moder template with commites from [@501st-alpha1](https://github.com/501st-alpha1)
+* __2.0.9__ : Updated Modern template with improved spacing. Update parsing of
+  `--template` option to close [issue #7](https://github.com/there4/markdown-resume/issues/7)
 * __2.0.8__ : New `readable` theme contributed by @ahmadnazir, minor refactor
   to support a /links directory
 * __2.0.7__ : Update composer to use `sunra/php-simple-html-dom-parser` this
-  appears to be better maintained and more popular to close #27
-* __2.0.6__ : Fix empty template list from phar file to close #24
-* __2.0.5__ : Remove default value for the `--refresh` option to close #22
-* __2.0.4__ : Fix path resolution problem with absolute paths to close #16
-* __2.0.3__ : Add optional duration to the `--refresh` option to close #15
-* __2.0.2__ : Add new dependency check for `mbstring` to close #20
-* __2.0.1__ : Add new `swissen` template with Helvetica styling (@beautifulcode)
+  appears to be better maintained and more popular to [close #27](https://github.com/there4/markdown-resume/issues/27)
+* __2.0.6__ : Fix empty template list from phar file to [close #24](https://github.com/there4/markdown-resume/issues/24)
+* __2.0.5__ : Remove default value for the `--refresh` option to [close #22](https://github.com/there4/markdown-resume/issues/22)
+* __2.0.4__ : Fix path resolution problem with absolute paths to [close #16](https://github.com/there4/markdown-resume/issues/16)
+* __2.0.3__ : Add optional duration to the `--refresh` option to [close #15](https://github.com/there4/markdown-resume/issues/15)
+* __2.0.2__ : Add new dependency check for `mbstring` to [close #20](https://github.com/there4/markdown-resume/issues/20)
+* __2.0.1__ : Add new `swissen` template with Helvetica styling [@beautifulcode](https://github.com/beautifulcode)
 * __2.0.0__ : Complete rewrite with the [symfony console component][console].
   Deployment is now done with a compiled phar file, and development dependencies
   are managed with composer.
 * __0.9.0__ : Add composer and update README with new changelog
-* __0.8.8__ : Add Chinese text example (@ishitcno1)
-* __0.8.7__ : Update pdf formatting of the modern template (@roleary)
-* __0.8.6__ : Fix output path (@abhikandoi2000)
-* __0.8.5__ : Fix issue #2
-* __0.8.4__ : Correct chmod and add parameter for output directory (@kevinxucs)
+* __0.8.8__ : Add Chinese text example [@ishitcno1](https://github.com/ishitcno1)
+* __0.8.7__ : Update pdf formatting of the modern template [@roleary](https://github.com/roleary)
+* __0.8.6__ : Fix output path [@abhikandoi2000](https://github.com/abhikandoi2000)
+* __0.8.5__ : Fix [issue #2](https://github.com/there4/markdown-resume/issues/2)
+* __0.8.4__ : Correct chmod and add parameter for output directory [@kevinxucs](https://github.com/kevinxucs)
 * __0.8.2__ : Update build script and add refresh command option
 * __0.8.1__ : Updating formatting of initial templates
 * __0.8__ : Initial Release to Public
